@@ -1,0 +1,91 @@
+\documentclass{article} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, systeme, mathtools, lmodern, float, graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage[scale=.95,type1]{cabin}
+\usepackage[framemethod=tikz]{mdframed}
+
+
+\usepackage[legalpaper,margin=1in]{geometry}
+
+\setlength{\parindent}{10pt}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.2}
+
+\title{Building projects}
+\date{}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\newcommand\y{\cellcolor{blue!10}}
+
+\usepackage{tabularray}
+\SetTblrInner{colsep=5pt,rowsep=1pt}
+
+\newcounter{Def}[section]
+\newenvironment{Def}[1][]{%
+  \ifstrempty{#1}%
+  {\mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
+    {\strut \color{black}{Definition}~};}}
+  }%
+  {\mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
+    {\strut \color{black}{Definition}~:~\color{blue4}{#1}};}}%
+  }%
+  \mdfsetup{innertopmargin=2pt,linecolor=blue!20,%
+            linewidth=1pt,topline=true,%
+            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
+  \begin{mdframed}[]\relax%
+  }{\end{mdframed}}
+%{\fontfamily{cmtt}\selectfont }
+\begin{document}
+  \begin{Def}[2 Categories of testing]
+    There are 2 categories of testing: unit testing and property testing.
+
+  \end{Def}
+  
+  \subsection*{Unit testing}
+  \begin{itemize}
+    \item \textbf{Unit testing} test the smallest atomic units of software independently of one another.
+      (Check each function)
+    \item \textbf{Spec testing} is a newer version of unit testing.
+  \end{itemize}
+
+  One limitation: they test atomic units independently, so they do not verify all pieces work together
+  properly.
+
+  \subsection*{Property testing}
+  Property tests test the formal properties of programs without requiring formal proofs by allowing you
+  to express a truth-valued, universally quantified (applied to all cases) function, which will be checked
+  against randomly generated inputs.
+
+  Executables are applications that the operating system will run directly, while software
+  libraries are code arranged in a manner so that they can be reused by the compiler in the
+  building of other libraries and programs.
+
+
+  {\fontfamily{cmtt}\selectfont a }
+
+
+  \begin{Def}[Idempotence]
+    Idempotence refers to a property of some functions in which the result value does not change
+    beyond the initial application. Eg: the {\fontfamily{cmtt}\selectfont sort} function.
+  \end{Def}
+  
+  
+
+
+
+
+\end{document}
+

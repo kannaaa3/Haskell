@@ -1,0 +1,96 @@
+\documentclass{article} \usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, systeme, mathtools, lmodern, float, graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage[scale=.95,type1]{cabin}
+\usepackage[framemethod=tikz]{mdframed}
+
+\usepackage[legalpaper,margin=1in]{geometry}
+
+\setlength{\parindent}{10pt}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.2}
+
+\title{Chapter 7: Eigenvalues and Eigenvectors}
+\date{}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\newcommand\y{\cellcolor{blue!10}}
+
+\usepackage{tabularray}
+\SetTblrInner{colsep=5pt,rowsep=1pt}
+
+\newcommand\x{\times}
+\newcommand\xor{\oplus}
+
+\newcommand\R{\mathbb{R}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\newcommand*{\Value}{\frac{1}{2}x^2}%
+
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+
+\newcounter{Def}[section]
+\newenvironment{Def}[1][]{%
+  \ifstrempty{#1}%
+  {\mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
+    {\strut \color{black}{Definition}~};}}
+  }%
+  {\mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
+    {\strut \color{black}{Definition}~:~\color{blue4}{#1}};}}%
+  }%
+  \mdfsetup{innertopmargin=2pt,linecolor=blue!20,%
+            linewidth=1pt,topline=true,%
+            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
+  \begin{mdframed}[]\relax%
+  }{\end{mdframed}}
+
+\begin{document}
+    \section{Lifted and unlifted types}
+    lifted: * (all standard lifted types), unlifted : \#
+
+    \begin{Def}[Lifted types]
+        A lifted type, which includes any datatype you could define yourself, is any
+        that can be inhabited by \textit{bottom}. Represented by a pointer.
+    \end{Def}
+    \begin{Def}[Unlifted type]
+        Unlifted types are any type which \textit{cannot} be inhabited by bottom (native machine
+        types and raw pointers).
+    \end{Def}
+
+    Newtypes are special case.
+
+    \subsubsection*{Data constructors are functions}
+    Data constant $\ne$ Data constructors.
+
+    \section{Unfold}
+    Folds - catamorphism break data structure down, then unfold build them up.
+    
+
+
+\end{document}

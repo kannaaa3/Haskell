@@ -1,0 +1,82 @@
+\documentclass{article} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, systeme, mathtools, lmodern, float, graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage[scale=.95,type1]{cabin}
+\usepackage[framemethod=tikz]{mdframed}
+
+
+\usepackage[legalpaper,margin=1in]{geometry}
+
+\setlength{\parindent}{10pt}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.2}
+
+\title{Monoids and semigroups}
+\date{}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\newcommand\y{\cellcolor{blue!10}}
+
+\usepackage{tabularray}
+\SetTblrInner{colsep=5pt,rowsep=1pt}
+
+\newcounter{Def}[section]
+\newenvironment{Def}[1][]{%
+  \ifstrempty{#1}%
+  {\mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
+    {\strut \color{black}{Definition}~};}}
+  }%
+  {\mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
+    {\strut \color{black}{Definition}~:~\color{blue4}{#1}};}}%
+  }%
+  \mdfsetup{innertopmargin=2pt,linecolor=blue!20,%
+            linewidth=1pt,topline=true,%
+            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
+  \begin{mdframed}[]\relax%
+  }{\end{mdframed}}
+%{\fontfamily{cmtt}\selectfont }
+
+\begin{document}
+ 
+  \begin{Def}[Monoid]
+    A monoid is a binary associative operation with an identity. Follows 2 laws: associativity
+    and identity.
+  \end{Def}
+  Integer form a monoid under summation and multiplication. Lists form a monoid under concatenation.
+
+  \subsection*{Orphan instances}
+  Writing orphan instances should be avoided \textit{at all costs}.
+
+  An orphan instance is when an instance is defined for a datatype and typeclass, but not
+  in the same module as either the declaration of the typeclass or the datatype. If not own
+  a typeclass, newtype it!
+
+  \begin{enumerate}
+    \item Put the instance in the same module as the type.
+    \item Put the instance in the same module as the typeclass definition.
+    \item Neither the type nor the typeclass are our, then newtype.
+  \end{enumerate}
+
+  \begin{Def}[Semigroup]
+
+{\fontfamily{cmtt}\selectfont Semigroup} provides a binary associative operation.
+  \end{Def}
+
+
+
+
+
+\end{document}

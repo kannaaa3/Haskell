@@ -1,0 +1,25 @@
+name:                meo
+version:             0.1.0.0
+synopsis:            Simple project template from stack
+description:         Please see README.md
+homepage:            https://github.com/bitemyapp/hello#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Dung Tran
+maintainer:          thuydungtran2207@@gmail.com
+copyright:           2016, Dung Tran
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+
+executable meo
+-- hello: the name of the binary or executable file
+  hs-source-dirs:      src
+-- exe: where to look for souce code (exe is a sub-directory)
+  main-is:             Main.hs
+-- execution of this binary begin by looking for a main function inside
+-- a file named Main.hs with module Main
+-- Only 1 Main in hs-source-dirs.
+  default-language:    Haskell2010
+-- just boilerplate
+  build-depends:       base >= 4.7 && < 5
