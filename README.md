@@ -1,3 +1,3 @@
 # Haskell
 
-Just give a try.
+Love and hate it at the same time.
