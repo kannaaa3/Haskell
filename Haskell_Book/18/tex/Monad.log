@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.17)  25 FEB 2022 17:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.17)  2 MAR 2022 11:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**17.tex
-(./17.tex
+**Monad.tex
+(./Monad.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2021-11-22> (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -666,147 +666,158 @@ File: md-frame-1.mdf 2013/07/01\ 1.9b: md-frame-1
 \c@mdf@env@ii=\count323
 \c@mdf@zref@counter=\count324
 Package zref Info: New property: mdf@pagevalue on input line 895.
-) (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2020/01/02 v5.9 Page Geometry
- (/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
-Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-)
-\Gm@cnth=\count325
-\Gm@cntv=\count326
-\c@Gm@tempcnt=\count327
-\Gm@bindingoffset=\dimen273
-\Gm@wd@mp=\dimen274
-\Gm@odd@mp=\dimen275
-\Gm@even@mp=\dimen276
-\Gm@layoutwidth=\dimen277
-\Gm@layoutheight=\dimen278
-\Gm@layouthoffset=\dimen279
-\Gm@layoutvoffset=\dimen280
-\Gm@dimlist=\toks45
 ) (/usr/share/texmf-dist/tex/latex/tabularray/tabularray.sty
 Package: tabularray 2021-12-01 v2021Q Typeset tabulars and arrays with LaTeX3
-\l__tblr_a_int=\count328
-\l__tblr_c_int=\count329
-\l__tblr_r_int=\count330
-\l__tblr_d_dim=\dimen281
-\l__tblr_h_dim=\dimen282
-\l__tblr_o_dim=\dimen283
-\l__tblr_p_dim=\dimen284
-\l__tblr_q_dim=\dimen285
-\l__tblr_r_dim=\dimen286
-\l__tblr_s_dim=\dimen287
-\l__tblr_t_dim=\dimen288
-\l__tblr_v_dim=\dimen289
-\l__tblr_w_dim=\dimen290
+\l__tblr_a_int=\count325
+\l__tblr_c_int=\count326
+\l__tblr_r_int=\count327
+\l__tblr_d_dim=\dimen273
+\l__tblr_h_dim=\dimen274
+\l__tblr_o_dim=\dimen275
+\l__tblr_p_dim=\dimen276
+\l__tblr_q_dim=\dimen277
+\l__tblr_r_dim=\dimen278
+\l__tblr_s_dim=\dimen279
+\l__tblr_t_dim=\dimen280
+\l__tblr_v_dim=\dimen281
+\l__tblr_w_dim=\dimen282
 \l__tblr_a_box=\box86
 \l__tblr_b_box=\box87
 \l__tblr_c_box=\box88
 \l__tblr_d_box=\box89
-\g__tblr_table_count_int=\count331
-\c@rownum=\count332
-\c@colnum=\count333
-\c@rowcount=\count334
-\c@colcount=\count335
-\abovesep=\dimen291
-\belowsep=\dimen292
-\leftsep=\dimen293
-\rightsep=\dimen294
-\g_tblr_level_int=\count336
-\g__tblr_data_row_key_count_int=\count337
-\g__tblr_data_column_key_count_int=\count338
-\g__tblr_data_cell_key_count_int=\count339
-\g__tblr_array_int=\count340
-\l__tblr_key_count_int=\count341
-\l__tblr_key_quotient_int=\count342
-\l__tblr_key_quotient_two_int=\count343
-\l__tblr_key_remainder_int=\count344
-\g__tblr_data_str_value_count_int=\count345
-\rulewidth=\dimen295
-\l__multicolumn_cell_number_int=\count346
+\g__tblr_table_count_int=\count328
+\c@rownum=\count329
+\c@colnum=\count330
+\c@rowcount=\count331
+\c@colcount=\count332
+\abovesep=\dimen283
+\belowsep=\dimen284
+\leftsep=\dimen285
+\rightsep=\dimen286
+\g_tblr_level_int=\count333
+\g__tblr_data_row_key_count_int=\count334
+\g__tblr_data_column_key_count_int=\count335
+\g__tblr_data_cell_key_count_int=\count336
+\g__tblr_array_int=\count337
+\l__tblr_key_count_int=\count338
+\l__tblr_key_quotient_int=\count339
+\l__tblr_key_quotient_two_int=\count340
+\l__tblr_key_remainder_int=\count341
+\g__tblr_data_str_value_count_int=\count342
+\rulewidth=\dimen287
+\l__multicolumn_cell_number_int=\count343
 \l__tblr_strut_ht_box=\box90
 \l__tblr_strut_dp_box=\box91
-\g__tblr_cell_wd_dim=\dimen296
-\g__tblr_cell_ht_dim=\dimen297
-\g__tblr_cell_head_dim=\dimen298
-\g__tblr_cell_foot_dim=\dimen299
-\l__column_target_dim=\dimen300
+\g__tblr_cell_wd_dim=\dimen288
+\g__tblr_cell_ht_dim=\dimen289
+\g__tblr_cell_head_dim=\dimen290
+\g__tblr_cell_foot_dim=\dimen291
+\l__column_target_dim=\dimen292
 \l__tblr_caption_box=\box92
 \l__tblr_caption_left_box=\box93
 \l__tblr_row_head_box=\box94
 \l__tblr_row_foot_box=\box95
-\l__tblr_row_head_foot_dim=\dimen301
-\tablewidth=\dimen302
+\l__tblr_row_head_foot_dim=\dimen293
+\tablewidth=\dimen294
 \l__tblr_table_firsthead_box=\box96
 \l__tblr_table_middlehead_box=\box97
 \l__tblr_table_lasthead_box=\box98
 \l__tblr_table_firstfoot_box=\box99
 \l__tblr_table_middlefoot_box=\box100
 \l__tblr_table_lastfoot_box=\box101
-\l__tblr_remain_height_dim=\dimen303
-\l__tblr_long_from_int=\count347
-\l__tblr_long_to_int=\count348
-\l__tblr_curr_i_int=\count349
-\l__tblr_prev_i_int=\count350
-\l__tblr_table_page_int=\count351
+\l__tblr_remain_height_dim=\dimen295
+\l__tblr_long_from_int=\count344
+\l__tblr_long_to_int=\count345
+\l__tblr_curr_i_int=\count346
+\l__tblr_prev_i_int=\count347
+\l__tblr_table_page_int=\count348
 \l__tblr_table_head_box=\box102
 \l__tblr_table_foot_box=\box103
-\l__tblr_table_head_foot_dim=\dimen304
-\l__tblr_table_head_body_foot_dim=\dimen305
+\l__tblr_table_head_foot_dim=\dimen296
+\l__tblr_table_head_body_foot_dim=\dimen297
 \l__tblr_table_box=\box104
 \l__tblr_table_hlines_box=\box105
 \l__tblr_hline_box=\box106
 \l__tblr_row_box=\box107
-\l__tblr_col_o_wd_dim=\dimen306
-\l__tblr_col_b_wd_dim=\dimen307
-\l__tblr_hline_leftskip_dim=\dimen308
-\l__tblr_hline_rightskip_dim=\dimen309
-\l__tblr_row_ht_dim=\dimen310
-\l__tblr_row_dp_dim=\dimen311
-\l__tblr_row_abovesep_dim=\dimen312
-\l__tblr_row_belowsep_dim=\dimen313
+\l__tblr_col_o_wd_dim=\dimen298
+\l__tblr_col_b_wd_dim=\dimen299
+\l__tblr_hline_leftskip_dim=\dimen300
+\l__tblr_hline_rightskip_dim=\dimen301
+\l__tblr_row_ht_dim=\dimen302
+\l__tblr_row_dp_dim=\dimen303
+\l__tblr_row_abovesep_dim=\dimen304
+\l__tblr_row_belowsep_dim=\dimen305
 \l__tblr_row_vlines_box=\box108
 \l__tblr_vline_box=\box109
 \l__tblr_cell_box=\box110
-\l__row_upper_dim=\dimen314
-\l__row_lower_dim=\dimen315
-\l__row_vpace_dim=\dimen316
-\l__tblr_vline_aboveskip_dim=\dimen317
-\l__tblr_vline_belowskip_dim=\dimen318
-\l__tblr_cell_wd_dim=\dimen319
-\l__tblr_cell_ht_dim=\dimen320
+\l__row_upper_dim=\dimen306
+\l__row_lower_dim=\dimen307
+\l__row_vpace_dim=\dimen308
+\l__tblr_vline_aboveskip_dim=\dimen309
+\l__tblr_vline_belowskip_dim=\dimen310
+\l__tblr_cell_wd_dim=\dimen311
+\l__tblr_cell_ht_dim=\dimen312
 \l__tblr_diag_box=\box111
+) (/usr/share/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box112
+\beforetitleunit=\skip123
+\aftertitleunit=\skip124
+\ttl@plus=\dimen313
+\ttl@minus=\dimen314
+\ttl@toksa=\toks45
+\titlewidth=\dimen315
+\titlewidthlast=\dimen316
+\titlewidthfirst=\dimen317
+) (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count349
+\Gm@cntv=\count350
+\c@Gm@tempcnt=\count351
+\Gm@bindingoffset=\dimen318
+\Gm@wd@mp=\dimen319
+\Gm@odd@mp=\dimen320
+\Gm@even@mp=\dimen321
+\Gm@layoutwidth=\dimen322
+\Gm@layoutheight=\dimen323
+\Gm@layouthoffset=\dimen324
+\Gm@layoutvoffset=\dimen325
+\Gm@dimlist=\toks46
 )
 \c@Def=\count352
- (./17.aux)
-\openout1 = `17.aux'.
+ (./Monad.aux)
+\openout1 = `Monad.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
  (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count353
-\scratchdimen=\dimen321
-\scratchbox=\box112
+\scratchdimen=\dimen326
+\scratchbox=\box113
 \nofMPsegments=\count354
 \nofMParguments=\count355
-\everyMPshowfont=\toks46
+\everyMPshowfont=\toks47
 \MPscratchCnt=\count356
-\MPscratchDim=\dimen322
+\MPscratchDim=\dimen327
 \MPnumerator=\count357
 \makeMPintoPDFobject=\count358
-\everyMPtoPDFconversion=\toks47
+\everyMPtoPDFconversion=\toks48
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -816,7 +827,9 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 \c@lstlisting=\count359
 \c@mv@tabular=\count360
 \c@mv@boldtabular=\count361
-
+ (/usr/share/texmf-dist/tex/latex/ninecolors/ninecolors.sty
+Package: ninecolors 2021/05/24 v2021C Select colors with proper color contrast
+)
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -851,59 +864,100 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/share/texmf-dist/tex/latex/ninecolors/ninecolors.sty
-Package: ninecolors 2021/05/24 v2021C Select colors with proper color contrast
+LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 46.
+(/usr/share/texmf-dist/tex/latex/lm/ot1lmss.fd
+File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 78.
- (/usr/share/texmf-dist/tex/latex/base/ts1cmtt.fd
-File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-<./cow.png, id=41, 1008.76875pt x 390.70969pt>
-File: ./cow.png Graphic file (type png)
-<use ./cow.png>
-Package pdftex.def Info: ./cow.png  used on input line 82.
-(pdftex.def)             Requested size: 469.75502pt x 181.94043pt.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 89.
+LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <17.28> not available
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 46.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 49.
  (/usr/share/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 89.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 49.
  (/usr/share/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 89.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 49.
  (/usr/share/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 89.
+(Font)              <10> on input line 49.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 89.
+(Font)              <7> on input line 49.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 89.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 89.
+(Font)              <5> on input line 49.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 49.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 89.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 49.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+<./images/monad.png, id=41, 274.02374pt x 99.37125pt>
+File: ./images/monad.png Graphic file (type png)
+<use ./images/monad.png>
+Package pdftex.def Info: ./images/monad.png  used on input line 52.
+(pdftex.def)             Requested size: 170.71652pt x 61.90976pt.
+LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 54.
+ (/usr/share/texmf-dist/tex/latex/lm/ot1lmtt.fd
+File: ot1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 61.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 61.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 72.
+<./images/dosyntax.png, id=42, 274.02374pt x 412.54124pt>
+File: ./images/dosyntax.png Graphic file (type png)
+<use ./images/dosyntax.png>
+Package pdftex.def Info: ./images/dosyntax.png  used on input line 75.
+(pdftex.def)             Requested size: 199.16928pt x 299.85587pt.
+<./images/mkCow.png, id=43, 283.81032pt x 184.43906pt>
+File: ./images/mkCow.png Graphic file (type png)
+<use ./images/mkCow.png>
+Package pdftex.def Info: ./images/mkCow.png  used on input line 78.
+(pdftex.def)             Requested size: 170.71652pt x 110.94571pt.
+ [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./cow.png (PNG copy)>] (./17.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/monad.png (PNG copy)> <./images/dosyntax.png (PNG copy)> <./images/mkCow.png (PNG copy)>]
+<./images/bindundefined.png, id=57, 433.62pt x 160.34906pt>
+File: ./images/bindundefined.png Graphic file (type png)
+<use ./images/bindundefined.png>
+Package pdftex.def Info: ./images/bindundefined.png  used on input line 88.
+(pdftex.def)             Requested size: 170.71652pt x 63.13043pt.
+<./images/eithermonad.png, id=58, 219.82124pt x 185.94469pt>
+File: ./images/eithermonad.png Graphic file (type png)
+<use ./images/eithermonad.png>
+Package pdftex.def Info: ./images/eithermonad.png  used on input line 91.
+(pdftex.def)             Requested size: 128.0374pt x 108.30762pt.
+<./images/identity.png, id=59, 191.9672pt x 125.71968pt>
+File: ./images/identity.png Graphic file (type png)
+<use ./images/identity.png>
+Package pdftex.def Info: ./images/identity.png  used on input line 101.
+(pdftex.def)             Requested size: 105.2751pt x 68.94652pt.
+<./images/associativity.png, id=60, 333.49594pt x 36.88782pt>
+File: ./images/associativity.png Graphic file (type png)
+<use ./images/associativity.png>
+Package pdftex.def Info: ./images/associativity.png  used on input line 105.
+(pdftex.def)             Requested size: 179.25244pt x 19.82736pt.
+ [2 <./images/bindundefined.png (PNG copy)> <./images/eithermonad.png (PNG copy)> <./images/identity.png (PNG copy)> <./images/associativity.png (PNG copy)>] (./Monad.aux) ) 
 Here is how much of TeX's memory you used:
- 25719 strings out of 478353
- 549964 string characters out of 5854635
- 886447 words of memory out of 5000000
- 43371 multiletter control sequences out of 15000+600000
- 429208 words of font info for 49 fonts, out of 8000000 for 9000
+ 25974 strings out of 478353
+ 551547 string characters out of 5854635
+ 887129 words of memory out of 5000000
+ 43601 multiletter control sequences out of 15000+600000
+ 452247 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,10n,99p,450b,967s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on 17.pdf (1 page, 185969 bytes).
+ 90i,5n,99p,480b,261s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on Monad.pdf (2 pages, 296041 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 43 compressed objects within 1 object stream
+ 105 PDF objects out of 1000 (max. 8388607)
+ 51 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 162 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 192 words of extra memory for PDF output out of 10000 (max. 10000000)
 
