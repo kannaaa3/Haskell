@@ -1,0 +1,51 @@
+\documentclass{article} 
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, mathtools, graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage[scale=.95,type1]{cabin}
+\usepackage[framemethod=tikz]{mdframed}
+
+
+\usepackage[legalpaper,margin=1in]{geometry}
+
+\setlength{\parindent}{10pt}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.2}
+
+\title{Applying structure}
+\date{}
+\author{}
+
+
+\newcommand\y{\cellcolor{blue!10}}
+
+\usepackage{tabularray}
+\SetTblrInner{colsep=5pt,rowsep=1pt}
+
+\newcounter{Def}[section]
+\newenvironment{Def}[1][]{%
+  \ifstrempty{#1}%
+  {\mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
+    {\strut \color{black}{Definition}~};}}
+  }%
+  {\mdfsetup{%
+    frametitle={%
+      \tikz[baseline=(current bounding box.east),outer sep=0pt]
+      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
+    {\strut \color{black}{Definition}~:~\color{blue4}{#1}};}}%
+  }%
+  \mdfsetup{innertopmargin=2pt,linecolor=blue!20,%
+            linewidth=1pt,topline=true,%
+            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
+  \begin{mdframed}[]\relax%
+  }{\end{mdframed}}
+
+\titleformat{\section}
+  {\fontfamily{lmss}\selectfont\LARGE\bfseries\color{black}}
+  {\thesection}{1em}{}
+\begin{document}
+
+\end{document}  

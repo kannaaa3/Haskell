@@ -3,19 +3,18 @@ import Data.Kind
 import GHC.Arr
 a = fmap (+1) $ read "[1]" :: [Int]
 b = (fmap . fmap) (++ "lol") (Just ["Hi, ", "Hello"])
-c = (fmap (*2)) (\x -> x - 2)
+c = fmap (*2) (\x -> x - 2)
 
-d :: Monad m => Int -> m [Char]
-d = (fmap ("1"++)) . return . show . (\x -> [x, (1 :: Int)..3])
+d :: Monad m => Int -> m [Char] 
+d = fmap ("1"++) . return . show . (\x -> [x, (1 :: Int)..3])
 
 -- e = [1, 2, 3] >>= d
---
 -- ee = (Just 3) >>= d
 
 
 e :: IO Integer
 e = let ioi     = read "1" ::  Integer
-        changed = readIO ("123" ++ (show ioi)) :: IO Integer
+        changed = readIO ("123" ++ show ioi) :: IO Integer
       in  fmap (*3) changed
 
 ------------------------------------------------
@@ -66,7 +65,7 @@ instance Functor (Quant a) where
   fmap _ (Desk x)         = Desk x
   fmap _ Finance          = Finance
 
-data K a b = 
+newtype K a b = 
   K a
   deriving (Eq,Show)
 
@@ -82,7 +81,7 @@ instance Functor (Flip K a) where
 
 ----------------------------------------
 
-data EvilGoateeConst a b =
+newtype EvilGoateeConst a b =
   GoatyConst b
   deriving (Eq, Show)
 
@@ -90,7 +89,7 @@ instance Functor (EvilGoateeConst a) where
   fmap f (GoatyConst b) = GoatyConst $ f b
 ----------------------------------------------
 
-data LiftItOut f a = 
+newtype LiftItOut f a = 
   LiftItOut (f a)
 
 instance Functor f => Functor (LiftItOut f) where
@@ -113,7 +112,7 @@ data List a =
   | Cons a (List a)
   deriving (Eq, Show)
 
-instance Functor (List) where
+instance Functor List where
   fmap f Nil  = Nil
   fmap f (Cons a xs)  = Cons (f a) (fmap f xs)
 

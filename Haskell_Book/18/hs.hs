@@ -113,7 +113,7 @@ mkSphericalCow'' name' age' weight' =
             \weighty ->
             weightCheck (Cow nammy agey weighty)
 
-toMaybe x = Just x
+toMaybe  = Just 
 agee :: Int -> Maybe Int
 agee x =  noNegative x >>= toMaybe
   

@@ -27,7 +27,7 @@ plusCommutative x y =
 -- quot rem
 checkQuot x y 
   | y == 0  = True
-  | True    = (quot x y) * y + (rem x y) == x
+  | otherwise    = (quot x y) * y + (rem x y) == x
 checkDiv x y = (div x y)  * y + (mod x y) == x
 
 roundTrip x = (read (show x)) == x

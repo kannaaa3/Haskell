@@ -1,12 +1,12 @@
 myIterate :: (a -> a) -> a -> [a]
-myIterate f x = x : (myIterate f (f x))
+myIterate f x = x : myIterate f (f x)
 
 
 
 myUnfoldr :: (b -> Maybe (a, b))
           -> b
           -> [a]
-myUnfoldr f x = fstVal : (myUnfoldr f sndVal)
+myUnfoldr f x = fstVal : myUnfoldr f sndVal
     where Just (fstVal, sndVal) = f x
 
 betterIterate :: (a -> a) -> a -> [a]
@@ -43,7 +43,6 @@ treeBuild n = unfold integerToMaybe 0
 treeBuild' :: Integer -> BinaryTree Integer
 treeBuild' n = unfold integerToMaybe 0
     where integerToMaybe x  = Just (x + 1, x , x + 1)
-          integerToMaybe n  = Nothing   --
 
 
 

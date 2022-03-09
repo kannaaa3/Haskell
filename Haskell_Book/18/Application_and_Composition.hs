@@ -6,7 +6,7 @@ mcomp :: Monad m =>
      (b -> m c)
   -> (a -> m b)
   ->  a -> m c
-mcomp f g a = (g a) >>= f 
+mcomp f g a = g a >>= f 
           --  join (f <$> (g a))
 
 -- (>=>) 

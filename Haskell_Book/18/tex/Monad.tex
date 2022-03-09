@@ -108,6 +108,15 @@ When it fails: {\fontfamily{cmtt}\selectfont Nothing >>= $\_ \quad$ = Nothing}, 
     
 \end{itemize}   
 
-\section{Application and composition}
+\section{Definition}
+\begin{Def}[Monad]
+  Functorially applying a function which produces more structure and using {\fontfamily{cmtt}\selectfont join} to reduce the nested structure.
+\end{Def}
+
+A \textit{monadic function} is one which generates more structure after having been lifted over monadic structure.\\
+  \includegraphics[width = 6 cm]{./composition.png} 
+
+  \textit{bind} is {\fontfamily{cmtt}\selectfont >>=} 
+
 
 \end{document}

@@ -18,7 +18,7 @@ import Control.Applicative
 data Nope a = 
   NopeDotJpg
 
-instance Functor (Nope) where
+instance Functor Nope where
   fmap _ _  = NopeDotJpg
 
 instance Applicative Nope where
@@ -125,7 +125,7 @@ instance Monad List where
   return = pure
   Nil >>= _         = Nil
   (Cons a la) >>= f =
-    (f a) `append` (la >>= f)
+    f a `append` (la >>= f)
         
 append :: List a -> List a -> List a
 append Nil x = x
@@ -133,7 +133,7 @@ append (Cons a la) la' = Cons a (la `append` la')
 
 instance Arbitrary a => Arbitrary (List a) where
   arbitrary = 
-    frequency [(1, return $ Nil)
+    frequency [(1, return  Nil)
               ,(7, Cons <$> arbitrary <*> arbitrary)]
 
 instance Eq a => EqProp (List a) where
@@ -159,7 +159,7 @@ quickCheckList = do
 
 j :: Monad m => m (m a) -> m a
 -- j ma = ma >>= id
-j = (flip (>>=)) id
+j = (=<<) id
 
 -------------------------------------------------------------------------------------------------
 -- 2
@@ -186,12 +186,12 @@ meh ::  Monad m
     =>  [a] -> (a -> m b) -> m [b]
 meh [] _ = pure []
 meh (x : xs) f = 
-  flipCons <$> (meh xs f) <*> (f x)
+  flipCons <$> meh xs f <*> f x
     where flipCons = flip (:)
 
 -------------------------------------------------------------------------------------------------
 -- 6
 flipType  :: (Monad m) => [m a] -> m [a]
-flipType  =  (flip meh) id
+flipType  =  flip meh id
 -- [m a] -> (m a -> m b) -> m [b]
 
