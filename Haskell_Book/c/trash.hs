@@ -1,4 +1,4 @@
 data Car = Car {
-                    huhu :: String,
-                    hu  :: Int
+                  huhu :: String,
+                  hu  :: Int
                }

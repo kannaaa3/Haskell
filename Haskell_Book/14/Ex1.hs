@@ -27,10 +27,10 @@ plusCommutative x y =
 -- quot rem
 checkQuot x y 
   | y == 0  = True
-  | otherwise    = (quot x y) * y + (rem x y) == x
-checkDiv x y = (div x y)  * y + (mod x y) == x
+  | otherwise    = quot x y * y + rem x y == x
+checkDiv x y = div x y  * y + mod x y == x
 
-roundTrip x = (read (show x)) == x
+roundTrip x = read (show x) == x
 
 
 
@@ -96,12 +96,12 @@ data Fool =
 
 genEqualFool :: Gen Fool
 genEqualFool = 
-  oneof [return $ Fulse, return $ Frue]
+  oneof [return Fulse, return Frue]
 
 genFulsePls :: Gen Fool
 genFulsePls = 
-  frequency [(2, return $ Fulse),
-             (1, return $ Frue)]
+  frequency [(2, return Fulse),
+             (1, return Frue)]
 
 ---------------------------------------
 

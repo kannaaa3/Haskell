@@ -1,115 +1,22 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, systeme, mathtools, lmodern, float, graphicx}
-\usepackage[most]{tcolorbox}
+\usepackage{amsmath, amssymb, systeme, mathtools, lmodern, float, graphicx, titlesec, multicol}
+% \usepackage[most]{tcolorbox}
+\usepackage[dvipsnames]{xcolor}
 \usepackage[scale=.95,type1]{cabin}
 \usepackage[framemethod=tikz]{mdframed}
 
 \usepackage[legalpaper,margin=1in]{geometry}
 
 \setlength{\parindent}{10pt}
-\setlength{\parskip}{1em}
+% \setlength{\parskip}{1em}
 \renewcommand{\baselinestretch}{1.2}
 
-\title{Chapter 7: Eigenvalues and Eigenvectors}
+\title{All you need is Lambda}
+\author{}
 \date{}
 
-\makeatletter
-\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
-  \hskip -\arraycolsep
-  \let\@ifnextchar\new@ifnextchar
-  \array{#1}}
-\makeatother
-
-\newcommand\y{\cellcolor{blue!10}}
-
 \usepackage{tabularray}
-\SetTblrInner{colsep=5pt,rowsep=1pt}
-
-\newcommand\x{\times}
-\newcommand\xor{\oplus}
-
-\makeatletter
-\newcommand{\dashover}[2][\mathop]{#1{\mathpalette\df@over{{\dashfill}{#2}}}}
-\newcommand{\fillover}[2][\mathop]{#1{\mathpalette\df@over{{\solidfill}{#2}}}}
-\newcommand{\df@over}[2]{\df@@over#1#2}
-\newcommand\df@@over[3]{%
-  \vbox{
-    \offinterlineskip
-    \ialign{##\cr
-      #2{#1}\cr
-      \noalign{\kern1pt}
-      $\m@th#1#3$\cr
-    }
-  }%
-}
-\newcommand{\dashfill}[1]{%
-  \kern-.5pt
-  \xleaders\hbox{\kern.5pt\vrule height.4pt width \dash@width{#1}\kern.5pt}\hfill
-  \kern-.5pt
-}
-\newcommand{\dash@width}[1]{%
-  \ifx#1\displaystyle
-    2pt
-  \else
-    \ifx#1\textstyle
-      1.5pt
-    \else
-      \ifx#1\scriptstyle
-        1.25pt
-      \else
-        \ifx#1\scriptscriptstyle
-          1pt
-        \fi
-      \fi
-    \fi
-  \fi
-}
-\newcommand{\solidfill}[1]{\leaders\hrule\hfill}
-\makeatother
-
-\newcommand\R{\mathbb{R}}
-
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-
-% Swap the definition of \abs* and \norm*, so that \abs
-% and \norm resizes the size of the brackets, and the 
-% starred version does not.
-\makeatletter
-\let\oldabs\abs
-\def\abs{\@ifstar{\oldabs}{\oldabs*}}
-%
-\let\oldnorm\norm
-\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
-\makeatother
-
-\newcommand*{\Value}{\frac{1}{2}x^2}%
-
-\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
-
-
-\newcounter{Theo}[section]
-\newenvironment{Theo}[1][]{%
-  \stepcounter{Lemma}%
-  \ifstrempty{#1}%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{THEOREM}}~};}}
-  }%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{THEOREM}}~:~\color{blue5}{#1}};}}%
-  }%
-  \mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
-            linewidth=1pt,topline=true,%
-            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
-  \begin{mdframed}[]\relax%
-  }{\end{mdframed}}
 
 \newcounter{Def}[section]
 \newenvironment{Def}[1][]{%
@@ -132,122 +39,41 @@
   \begin{mdframed}[]\relax%
   }{\end{mdframed}}
 
-\newcounter{Ans}[section]
-\newenvironment{Ans}[1][]{%
-  \ifstrempty{#1}%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{ANSWER}}~};}}
-  }%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{ANSWER}}~:~\color{blue4}{#1}};}}%
-  }%
-  \mdfsetup{innertopmargin=2pt,linecolor=blue!20,%
-            linewidth=1pt,topline=true,%
-            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
-  \begin{mdframed}[]\relax%
-  }{\end{mdframed}}
-
-\newcounter{Ques}[section]
-\newenvironment{Ques}[1][]{%
-  \ifstrempty{#1}%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{blue5}{\textit{QUESTION}}~};}}
-  }%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{ANSWER}}~:~\color{blue4}{#1}};}}%
-  }%
-  \mdfsetup{innertopmargin=2pt,linecolor=blue!20,%
-            linewidth=1pt,topline=true,%
-            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
-  \begin{mdframed}[]\relax%
-  }{\end{mdframed}}
-
-
-\newcounter{Conc}[section]
-\newenvironment{Conc}[1][]{%
-  \ifstrempty{#1}%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{blue5}{Conclude}~};}}
-  }%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{ANSWER}}~:~\color{blue4}{#1}};}}%
-  }%
-  \mdfsetup{innertopmargin=0pt,linecolor=blue!20,%
-            linewidth=1pt,topline=true,%
-            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
-  \begin{mdframed}[]\relax%
-  }{\end{mdframed}}
-
-\newcounter{Summarize}[section]
-\newenvironment{Summarize}[1][]{%
-  \ifstrempty{#1}%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{blue5}{\textit{SUMMARY}}~};}}
-  }%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{SUMMARY}}~:~\color{blue4}{#1}};}}%
-  }%
-  \mdfsetup{innertopmargin=0pt,linecolor=blue!20,%
-            linewidth=1pt,topline=true,%
-            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
-  \begin{mdframed}[]\relax%
-  }{\end{mdframed}}
-
-
+\titleformat{\section}
+  {\fontfamily{lmss}\selectfont\Large\bfseries\color{black}}
+  {\thesection}{1em}{}
 \begin{document}
+\maketitle
     \begin{Def}[Functional Programming]
         A computer programming paradigm that relies on fucntions modeled on mathematical
         functions.
     \end{Def}
-    The essence of functional programming is that programs are combinations of expressions.
-    Expressions include conrete values, variables, and also functions.
-
-    Functions are expressions that are applied to an argument or input, and once applied,
-    can be reduced or evaluated.
-
-    The word \textit{purity} in functional programming is sometimes also used to mean 
-    what is more properly called \textit{referential transparency}. Referential transparency means
-    that the same function, given the same values to evaluate, will always return the same
+    The essence of functional programming is that programs are combinations of expressions. 
+    \begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+      \item \textbf{Expressions} conrete values, variables, and also functions.
+      \item \textbf{Functions.} Expressions that are applied to an argument or input, and once applied, can be reduced or evaluated.
+      \item \textbf{Purity}: Referential transparency - the same function, same {\fontfamily{cmtt}\selectfont input}, always return the same
     result in pure functional programming, as they do in math.
+\end{itemize}
+
 
     \begin{Def}[What is a function?]
         A function is a relation between a set of possible inputs and a set of possible
-        outputs. The input set is known as the domain, and the set if possible outputs
-        for the function is called the codomain. The subset of the codomain that contains
-        possible outputs related to different inputs is know as the image.
+        outputs. 
+      \begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+        \item \textbf{The input set.} The Domain.
+        \item \textbf{The output set.} The Codomain.
+        \item \textbf{The image.} The subset of the codomain that contains possible outputs related to different inputs.
+      \end{itemize}
     \end{Def}
 
     \section{The structure of lambda terms}
-    THe lambda calculus has 3 basic components, or \textit{lambda terms}: expressions, variables, and
+    The lambda calculus has 3 basic components, or \textit{lambda terms}: expressions, variables, and
     abstractions.
-    \begin{itemize}
-        \item expression    : refers to a superset of all those things.\\
+    \begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+        \item \textbf{Expression}    : refers to a superset of all those things.\\
             An expression can be a variable name, an abstraction, or a combination of those.
-        \item abstraction   : a function. It is a lambda term that has a head (a lambda) and a body
+        \item \textbf{Abstraction}   : a function. It is a lambda term that has a head (a lambda) and a body
             and is applied to an argument (an input value).
             \begin{equation*}
                 \lambda x . x
@@ -255,13 +81,11 @@
     \end{itemize}
 
     \section{Alpha equivalence}
-    Same function, fx.x=fy.y
+    Same meaning: $\lambda x.x \, \equiv \, \lambda y.y \, \equiv \lambda z.z     $
 
     \section{Beta reduction}
     \begin{Def}[Beta reduction]
-        When applying a function to an argument, we substiture the input expression for all
-        instances of bound variables within the body of the abstraction. We also eliminate
-        the head of abstraction, since its onlu purpiose was to bind a variable.
+        Substitute {\fontfamily{cmtt}\selectfont input} expression for all {\fontfamily{cmtt}\selectfont variables} within the body of {\fontfamily{cmtt}\selectfont abstraction}.
     \end{Def}
     \begin{equation*}
         \begin{split}
@@ -269,61 +93,54 @@
                            & 2
         \end{split}
     \end{equation*}
-    This function is the \textit{identity} function. And applications in the lambda calculus
-    are \textit{left associative.}
+    This is the \textit{identity} function. And applications in the lambda calculus
+    are \textbf{left associative.}
 
-    \subsection{Free variables}
-    Free variables are those in the body expression that are not named in the head.
+    \begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+      \item \textbf{Free variables.} Variable not in the head $\lambda$, not apply \textit{alpha equivalence}.
     \begin{equation*}
         \lambda x . xy
     \end{equation*}
-    Alpha equivalence does not apply to free variables.
+    \item \textbf{Multiple arguments.} $\lambda xy . xy \to \lambda x (\lambda y . xy)$
+    \end{itemize}               
 
-    \section{Multiple arguments}
-    \begin{equation*}
-        \lambda xy . xy \to \lambda x (\lambda y . xy)
-    \end{equation*}
 
-    \section{Evaluation is simplification}
+    \section{Evaluation is Simplification}
+\begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+  \item \textbf{Beta normal form.} The form which cannot be reduced any further.
 
-    \begin{Def}[Beta normal form]
-        Beta normal form is when you cannot beta reduce the terms any further.
-        This corresponds to a fully evaluated expression.
+        Eg: not {\fontfamily{cmtt}\selectfont 2000/1000}, but {\fontfamily{cmtt}\selectfont 2}.
+\end{itemize}
 
-        Eg: 2000/1000 and 2.
-    \end{Def}
 
-    \section{Combinators}
-    \begin{Def}
-        A comibnator is a lambda term with no free variables. Combinators serve only
-        to combine the arguments they are given.
-    \end{Def}
+\section{Combinators}
 
-    \section{Divergence}
-    \begin{equation*}
-        (\lambda x.xx)(\lambda x.xx)
-    \end{equation*}
+A \textbf{combinator} is a lambda term with \textbf{no free variables}. Combinators are only
+used \textbf{combine} the arguments. 
+\begin{multicols}{3}
+  \begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+    \item $\lambda zy . zzy$ 
+    \item $\lambda x. x$
+    \item $\lambda xy. y$      
+  \end{itemize}
+\end{multicols}
 
-    \section{Definition}
-    1. A lambda abstraction is an anonymous function or lambda term. $(\lambda x. x+1)$\\
-    2. Application is reducing lambdas, which binds the argument to whatever the lambda 
-    was applied to.
-    \begin{equation*}
-        (\lambda x.x) 1
-    \end{equation*}
-    3. Lambda calculus is a formal system for expressing programs in terms of abstraction
-    and application.\\
-    4. Normal order is a common evaluation strategy in lambda calculi.\\
-    Normal order means evaluating (beta reducing) the leftmost outermost lambdas first.
+\section{Divergence}
+\begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+  \item Reducible lambda terms \textbf{not} reduce neatly to a \textbf{beta normal form}. The reduction process \textbf{never} terminates or ends.
+\[ \text{{\fontfamily{cmtt}\selectfont omega:}} \ \  (\lambda x.xx)(\lambda x.xx) \to (\lambda x.xx)(\lambda x.xx) \]  
+\end{itemize}
+
+\section{Definition}
+1. A \textbf{lambda abstraction} is an anonymous function or lambda term. $(\lambda x. x+1)$\\
+2. \textbf{Application} is reducing lambdas, which binds the argument to whatever the lambda 
+was applied to.
+\begin{equation*}
+    (\lambda x.x) 1
+\end{equation*}
+3. Lambda calculus is a formal system for expressing programs in terms of abstraction
+and application.\\
+4. \textbf{Normal order} is a common evaluation strategy in lambda calculi. 
+Normal order means evaluating (beta reducing) the leftmost outermost lambdas first.
     
-
-    
-
-
-
-
-
-
-
-
 \end{document}
