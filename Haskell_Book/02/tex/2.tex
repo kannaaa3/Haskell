@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, systeme, mathtools, lmodern, float, graphicx, titlesec}
+\usepackage{amsmath, amssymb, systeme, mathtools, lmodern, float, graphicx, titlesec, multicol}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[scale=.95,type1]{cabin}
 \usepackage[framemethod=tikz]{mdframed}
@@ -39,79 +39,66 @@
   }{\end{mdframed}}
 
 \titleformat{\section}
-  {\fontfamily{lmss}\selectfont\LARGE\bfseries\color{black}}
+  {\fontfamily{lmss}\selectfont\Large\bfseries\color{black}}
   {\thesection}{1em}{}
 \begin{document}
 \maketitle
-   Redexes are reducible expressions. (Also called "\textit{normalizing}" or "executing" an expression)
-   
-   Functions are a specific type of expression. Currying is applying a series of nested 
-   functions.
+\begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+  \item 
+   \textbf{Redexes} are reducible expressions. (Evaluation, reduction: "\textit{normalizing}" or "executing" an expression)
+ \item  
+   \textbf{Functions} are a specific type of expression. 
+  \item \textbf{Currying.} Apply 1 argument to each of nested functions.
+\end{itemize}   
 
    \section{Evaluation}
    Evaluating an expression is reducing the terms until the expression reaaches its simplest form.
+
+   \begin{Def}[Lazy Evaluation]
+    Defer evaluation of terms until being forced.
+   \end{Def}
+   \begin{itemize}
+    \item \textbf{Infix operators.} {\fontfamily{cmtt}\selectfont (+) 100 100} or {\fontfamily{cmtt}\selectfont 100 `add` 100}
+   \end{itemize}
    \section{Associativity and precedence}
-   Higher number, higher precedence.
-   Associativity: left or right.
-
-   Use space, not tab.
-
-   Error: indent, not starting a declaration at the beggining (left) column of the line.
-   
+   \begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+    \item \textbf{Precedence.} Higher number, higher precedence.
+    \item \textbf{Associativity}: left or right.
+   \end{itemize}
+\begin{center} 
+ \includegraphics[width=8 cm]{img/2022-06-20-20-56-17.png}
+ \end{center} 
+ \begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+  \item Use {\fontfamily{cmtt}\selectfont space}, not Tab.
+  \item All declarations in the module must start at the \textbf{same column}.
    The first declaration in a module defines the remaining ones.
+ \item \textbf{Sectioning} {\fontfamily{cmtt}\selectfont (+1), (*30), ...}       
+ \end{itemize}
 
-   (quot x y) * y + (rem x y) == x
-   (div x y) * y + (mod x y) == x
-
-   mod has the same sign as the divisor.
-   rem: dividend
-
-   sectioning (+1)
+   
+   % (quot x y) * y + (rem x y) == x
+   % (div x y) * y + (mod x y) == x
+   %
+   % mod has the same sign as the divisor.
+   % rem: dividend
+   %
 
 
    \section{Let and where}
-   Let introduces an expression, where is a declaration.
+   \begin{multicols}{2}
+\begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+  \item 
+   {\fontfamily{cmtt}\selectfont Let} introduces an expression 
+ \item {\fontfamily{cmtt}\selectfont where} is a declaration.
+\item \textbf{Scope.} The area of \textit{source code} where a binding of a variable applies. 
+\item The \textbf{order} in code is unimportant.
+\end{itemize}
+   \end{multicols}      
+   {\fontfamily{cmtt}\selectfont where}: syntactic sugar for a declaration.
 
-   Scope is the area of source code where a binding of a variable applies.
-    
-   Write code in a source file: the order is unimportant, but when writing code directly into
-   the REPL, it does matter.
-
-   Infix: place between.
-
-   \begin{Def}
        \textbf{Syntactic sugar} is syntax within a programming language designed to make expressions easier
        to write or read.
-   \end{Def}
-
-   Types are way of categorizing values.
-
-   :: has the type (type signature)
-
-   \begin{Def}[Typeclasses]
-       Typeclasses provide definitions of operations, or functions, that can be shared
-       across sets of types.
-   \end{Def}
-   (:) cons
     
-   \begin{Def}[Scope]
-       Scope is where a variable referred to by name is valid. Another word used with the same
-       meaning is \textit{visibility}, because if a variable isn't visible, it's not in scope
-   \end{Def}
-
-   \begin{Def}[Local and Top level bindings]
-       \begin{itemize}
-           \item Local bindings are bindings local to particular expressions. Cannot be imported
-       by other programs or modules.
-   \item Top level bindings are bindings that stand outside of any other declaration. Can be made available
-       to other modules within your programs or to ther ppl.
-       \end{itemize}
-   \end{Def}
-
-   \begin{Def}[Data Structures]
-       Data structures are way of organizing data so that the data can be accessed conveniently
-       or efficiently.
-   \end{Def}
 
 
 

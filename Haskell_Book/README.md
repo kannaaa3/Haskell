@@ -2,16 +2,16 @@
 | Chapter      | State | 
 | :---        |    :----:   |
 | 01: Lamda    | :heavy_check_mark:     |
-| 02: Hello, Haskell!   |        | 
-| 03: Strings| |
-| 04: Basic datatypes| |
-| 05: Types| |
-| 06: Typeclasses| |
-| 07: More functional patterns| |
-| 08: Recursion| |
-| 09: Lists| |
-| 10: Folding lists| |
-| 11: Algebraic datatypes| |
+| 02: Hello, Haskell!   | :heavy_check_mark:       | 
+| 03: Strings| :heavy_check_mark:|
+| 04: Basic datatypes| :heavy_check_mark:|
+| 05: Types| :heavy_check_mark: |
+| 06: Typeclasses| :heavy_check_mark: |
+| 07: More functional patterns| :heavy_check_mark: |
+| 08: Recursion| :heavy_check_mark: |
+| 09: Lists| :heavy_check_mark: |
+| 10: Folding lists| :heavy_check_mark: |
+| 11: Algebraic datatypes| :heavy_check_mark: |
 | 12: Signaling adversity| |
 | 13: Building projects| |
 | 14: Testing | |

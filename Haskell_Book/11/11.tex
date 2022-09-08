@@ -1,0 +1,190 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc, vietnam}
+\usepackage{amssymb, graphicx, fontawesome5, titlesec, lmodern, MnSymbol, multicol, listings}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[scale=.95,type1]{cabin}
+\usepackage[framemethod=tikz]{mdframed}
+
+\usepackage[legalpaper,margin=1in]{geometry}
+\setlength{\parindent}{10pt}
+%\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.2}
+
+\usepackage{tabularray}
+
+\title{CHAPTER 11: ALGEBRAIC DATATYPES}
+\date{}
+\author{}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{rgb}{0.93725490196,0.94509803921,0.96078431372}
+\definecolor{codewhite}{rgb}{0.75,0.78,0.84}
+\definecolor{normalcode}{rgb}{0.35,0.36,0.45}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegray},
+	keywordstyle=\color{magenta},
+	numberstyle=\small\color{codegray}\fontfamily{cmtt}\selectfont,
+	stringstyle=\color{codegreen},
+	basicstyle=\ttfamily\color{normalcode}\footnotesize,
+	breakatwhitespace=false,
+	frame=single,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\newcounter{Def}[section]
+\newenvironment{Def}[1][]{%
+	\ifstrempty{#1}%
+	{\mdfsetup{%
+			frametitle={%
+					\tikz[baseline=(current bounding box.east),outer sep=0pt]
+					\node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
+					{\strut \color{black}{Definition}~};}}
+	}%
+	{\mdfsetup{%
+			frametitle={%
+					\tikz[baseline=(current bounding box.east),outer sep=0pt]
+					\node[line width=1pt,anchor=east,rectangle,draw=Lavender!80,fill=white]
+					{\strut ~\color{RubineRed!80}{#1}};}}%
+	}%
+	\mdfsetup{innertopmargin=2pt,linecolor=Lavender!80,%
+		linewidth=1pt,topline=true,%
+		frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
+	\begin{mdframed}[]\relax%
+		}{\end{mdframed}}
+
+\titleformat{\section}
+{\fontfamily{lmss}\selectfont\LARGE\bfseries\color{black}}
+{\thesection}{1em}{}
+\begin{document}
+\begin{multicols}{2}
+	\begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+		\item \textbf{Types.} Static, and resolved at compile time (before runtime).
+		\item \textbf{Data.} At runtime (the real execution).
+	\end{itemize}
+\end{multicols}
+\subsubsection*{\textcolor{RubineRed}{Data constructor} arities}
+\begin{multicols}{2}
+	\begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+		\item \textbf{Arity.} Number of {\fontfamily{cmtt}\selectfont args}.
+		\item \textbf{Nullary.} Takes no arguments.
+		\item \textbf{Unary.} Takes 1 argument.
+		\item \textbf{Binary.} Takes 2 arguments.
+	\end{itemize}
+\end{multicols}
+\begin{lstlisting}[language = Haskell]
+data Example2 =
+  Example2 Int String           -- product of Int and String
+  deriving (Eq, Show) 
+\end{lstlisting}
+\begin{Def}[Algebraic and Cardinality]
+	\textbf{Algebraic datatypes} are algebraic since the patterns of argument structures using 2
+	basic operations: \textit{sum} and \textit{product}. And even \textbf{distributive}!
+
+	The \textbf{cardinality} a datatype is the number of possible values it defines.
+\end{Def}
+
+\section{newtype}
+A newtype has \textbf{no runtime overhead}, as it reuses the representation of the type it contains.
+\begin{lstlisting}[language = Haskell]
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}           -- with this pragma!
+
+class TooMany a where
+  tooMany :: a -> Bool
+
+instance TooMany Int where
+  tooMany n = n > 42                   
+
+newtype Goats =                             -- newtype allows us to get it free!
+  Goats Int deriving (Eq, Show, TooMany)     -- but we can actually define it! 
+\end{lstlisting}
+
+If you want to do anything other than \colorbox{black!10}{\fontfamily{cmtt}\selectfont TypeConstructor a1 a2 a3} ... (and as have to be type variables) than you need \textbf{Flexible Instances}.
+\begin{lstlisting}[language = Haskell]
+{-# LANGUAGE FlexibleInstances          #-}
+  
+instance TooMany (Int, String) where -- require FlexibleInstances
+  tooMany (x, _) = tooMany x
+\end{lstlisting}
+
+About the \textbf{bounds}, well.
+\begin{lstlisting}[language = Haskell]
+Prelude> let n = Numba (-128)
+--         Literal 128 is out of the
+--         Int8 range -128..127 blah blah blah (complaining before negate)
+Prelude> let n = (-128)
+Prelude> let x = Numba n -- or use :set -XNegativeLiterals (not prevent the warnings)
+\end{lstlisting}
+
+\subsubsection*{Record syntax}
+The whole record must be declared instead of \textbf{partially} do it.
+\begin{lstlisting}[language = Haskell]
+Prelude> let partialAf = Programmer Mac               --  OK
+Prelude> let partialAf' = Programmer { os = Mac}      -- bottom
+Prelude> partialAf'
+Programmer {os = Mac, lang = 
+*** Exception: <interactive>:5:18-39: Missing field in record construction lang \end{lstlisting}
+
+And, better to use {\fontfamily{cmtt}\selectfont \textcolor{RubineRed}{Maybe}}, rather than a data constructor {\fontfamily{cmtt}\selectfont Null}. Better to split out the \textbf{product type} with the \textit{type constructor}.
+
+\begin{lstlisting}[language = Haskell]
+-- Split out the record/product
+data Car = Car { make :: String
+              , model :: String
+              , year :: Integer }
+              deriving (Eq, Show)
+-- The Null is still not great, but
+-- we're leaving it in to make a point
+data Automobile = Null
+                | Automobile Car
+                deriving (Eq, Show)  
+Prelude> make Null -- the typechecker catch us b4 runtime
+-- Blah blah complaining about type
+\end{lstlisting}
+
+\subsubsection*{Function type is exponential}
+
+The number of inhabitants of {\fontfamily{cmtt}\selectfont a -> b} is $b^a$.
+
+\begin{lstlisting}[language = Haskell]
+-- 3 ^ 3
+quantFlip1 :: Quantum -> Quantum   -- Yes | No | Both
+quantFlip1 Yes = Yes
+quantFlip1 No = Yes
+quantFlip1 Both = Yes
+
+quantFlip2 :: Quantum -> Quantum          -- f a1 = b options
+quantFlip2 Yes= Yes                       -- f a2 = b options
+quantFlip2 No= Yes                        -- f a3 = b options
+quantFlip2 Both = No                      --  b^a
+
+quantFlip3 :: Quantum -> Quantum
+quantFlip3 Yes= Yes
+quantFlip3 No= Yes
+quantFlip3 Both = Both
+-- blah blah blah \end{lstlisting}
+ 
+\section{Higher-kinded datatypes}
+
+Those that need to be fully applied are {\fontfamily{cmtt}\selectfont * -> * -> *}.
+\begin{lstlisting}[language = Haskell]
+data Silly a b c d =                  -- * -> * -> * -> * -> *
+  MkSilly a b c d deriving Show       -- Silly Int String Int Int Int, or (,,,,)
+\end{lstlisting}
+\subsubsection*{Infix type and data constructors}
+
+All infix data constructors (type) start with a \textbf{colon} {\fontfamily{cmtt}\selectfont (:)}.
+
+\end{document}

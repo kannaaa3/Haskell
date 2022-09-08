@@ -6,7 +6,7 @@ avgGrade x
   | y >= 0.9    = 'A'
   | y >= 0.5    = 'F'
   | y >= 0.8    = 'B'
-  | True        = 'C'
+  | otherwise        = 'C'
     where y = x / 100
 
 -- print = putStrLn , show

@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, systeme, mathtools, lmodern, float, graphicx}
+\usepackage{amsmath, amssymb, systeme, mathtools, lmodern, float, graphicx, fontawesome5, titlesec, multicol}
+\usepackage[dvipsnames]{xcolor}
 \usepackage[most]{tcolorbox}
 \usepackage[scale=.95,type1]{cabin}
 \usepackage[framemethod=tikz]{mdframed}
@@ -8,108 +9,16 @@
 \usepackage[legalpaper,margin=1in]{geometry}
 
 \setlength{\parindent}{10pt}
-\setlength{\parskip}{1em}
+% \setlength{\parskip}{1em}
 \renewcommand{\baselinestretch}{1.2}
 
-\title{Chapter 7: Eigenvalues and Eigenvectors}
+\title{Basic Datatypes}
 \date{}
-
-\makeatletter
-\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
-  \hskip -\arraycolsep
-  \let\@ifnextchar\new@ifnextchar
-  \array{#1}}
-\makeatother
 
 \newcommand\y{\cellcolor{blue!10}}
 
 \usepackage{tabularray}
 \SetTblrInner{colsep=5pt,rowsep=1pt}
-
-\newcommand\x{\times}
-\newcommand\xor{\oplus}
-
-\makeatletter
-\newcommand{\dashover}[2][\mathop]{#1{\mathpalette\df@over{{\dashfill}{#2}}}}
-\newcommand{\fillover}[2][\mathop]{#1{\mathpalette\df@over{{\solidfill}{#2}}}}
-\newcommand{\df@over}[2]{\df@@over#1#2}
-\newcommand\df@@over[3]{%
-  \vbox{
-    \offinterlineskip
-    \ialign{##\cr
-      #2{#1}\cr
-      \noalign{\kern1pt}
-      $\m@th#1#3$\cr
-    }
-  }%
-}
-\newcommand{\dashfill}[1]{%
-  \kern-.5pt
-  \xleaders\hbox{\kern.5pt\vrule height.4pt width \dash@width{#1}\kern.5pt}\hfill
-  \kern-.5pt
-}
-\newcommand{\dash@width}[1]{%
-  \ifx#1\displaystyle
-    2pt
-  \else
-    \ifx#1\textstyle
-      1.5pt
-    \else
-      \ifx#1\scriptstyle
-        1.25pt
-      \else
-        \ifx#1\scriptscriptstyle
-          1pt
-        \fi
-      \fi
-    \fi
-  \fi
-}
-\newcommand{\solidfill}[1]{\leaders\hrule\hfill}
-\makeatother
-
-\newcommand\R{\mathbb{R}}
-
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-
-% Swap the definition of \abs* and \norm*, so that \abs
-% and \norm resizes the size of the brackets, and the 
-% starred version does not.
-\makeatletter
-\let\oldabs\abs
-\def\abs{\@ifstar{\oldabs}{\oldabs*}}
-%
-\let\oldnorm\norm
-\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
-\makeatother
-
-\newcommand*{\Value}{\frac{1}{2}x^2}%
-
-\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
-
-
-\newcounter{Theo}[section]
-\newenvironment{Theo}[1][]{%
-  \stepcounter{Lemma}%
-  \ifstrempty{#1}%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{THEOREM}}~};}}
-  }%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{THEOREM}}~:~\color{blue5}{#1}};}}%
-  }%
-  \mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
-            linewidth=1pt,topline=true,%
-            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
-  \begin{mdframed}[]\relax%
-  }{\end{mdframed}}
 
 \newcounter{Def}[section]
 \newenvironment{Def}[1][]{%
@@ -123,119 +32,44 @@
   {\mdfsetup{%
     frametitle={%
       \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{Definition}~:~\color{blue4}{#1}};}}%
+      \node[line width=1pt,anchor=east,rectangle,draw=Lavender!20,fill=white]
+    {\strut ~\color{RubineRed!80}{#1}};}}%
   }%
-  \mdfsetup{innertopmargin=2pt,linecolor=blue!20,%
+  \mdfsetup{innertopmargin=2pt,linecolor=Lavender!20,%
             linewidth=1pt,topline=true,%
             frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
   \begin{mdframed}[]\relax%
   }{\end{mdframed}}
-
-\newcounter{Ans}[section]
-\newenvironment{Ans}[1][]{%
-  \ifstrempty{#1}%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{ANSWER}}~};}}
-  }%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{ANSWER}}~:~\color{blue4}{#1}};}}%
-  }%
-  \mdfsetup{innertopmargin=2pt,linecolor=blue!20,%
-            linewidth=1pt,topline=true,%
-            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
-  \begin{mdframed}[]\relax%
-  }{\end{mdframed}}
-
-\newcounter{Ques}[section]
-\newenvironment{Ques}[1][]{%
-  \ifstrempty{#1}%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{blue5}{\textit{QUESTION}}~};}}
-  }%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{ANSWER}}~:~\color{blue4}{#1}};}}%
-  }%
-  \mdfsetup{innertopmargin=2pt,linecolor=blue!20,%
-            linewidth=1pt,topline=true,%
-            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
-  \begin{mdframed}[]\relax%
-  }{\end{mdframed}}
-
-
-\newcounter{Conc}[section]
-\newenvironment{Conc}[1][]{%
-  \ifstrempty{#1}%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{blue5}{Conclude}~};}}
-  }%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{ANSWER}}~:~\color{blue4}{#1}};}}%
-  }%
-  \mdfsetup{innertopmargin=0pt,linecolor=blue!20,%
-            linewidth=1pt,topline=true,%
-            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
-  \begin{mdframed}[]\relax%
-  }{\end{mdframed}}
-
-\newcounter{Summarize}[section]
-\newenvironment{Summarize}[1][]{%
-  \ifstrempty{#1}%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{blue5}{\textit{SUMMARY}}~};}}
-  }%
-  {\mdfsetup{%
-    frametitle={%
-      \tikz[baseline=(current bounding box.east),outer sep=0pt]
-      \node[line width=1pt,anchor=east,rectangle,draw=blue!20,fill=white]
-    {\strut \color{black}{\textit{SUMMARY}}~:~\color{blue4}{#1}};}}%
-  }%
-  \mdfsetup{innertopmargin=0pt,linecolor=blue!20,%
-            linewidth=1pt,topline=true,%
-            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,}
-  \begin{mdframed}[]\relax%
-  }{\end{mdframed}}
-
+\titleformat{\section}
+  {\fontfamily{lmss}\selectfont\LARGE\bfseries\color{black}}
+  {\thesection}{1em}{}
 \begin{document}
-    The implicit associativity of the function does not mean the inner or final set of parentheses, i. e, the result type, evaluates first.
-    \section{Partial application}
-    
-    The word "\textit{sectioning}" refers to partial application of infix operators.
+    \subsubsection*{Partial application}
+    \begin{multicols}{2}
+      \begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+        \item {\fontfamily{cmtt}\selectfont Uncurried functions.} 1 function, many arguments.
+        \item {\fontfamily{cmtt}\selectfont Curried functions.} Many functions, 1 argument apiece.
+      \end{itemize}
+   \end{multicols} 
 
-    \begin{Def}[Parametricity]
-        \textit{Parametricity} means that the behavior of a function with respect to the types of its (parametrically polymorphic) arguments is uniform. The behavior cannot change just because it was applied to
+\begin{minipage}[]{0.4\linewidth}
+  \begin{Def}[Typecheck]
+ You can check types that \textit{aren't implemented yet}. Give it an \textit{undefined} to bind the signature.
+  \end{Def}
+\end{minipage}\hfill
+\begin{minipage}[]{0.55\linewidth}
+  3 types of type signatures: concrete, constrained polymorphic, and parametrically polymorphic.
+\end{minipage}
+
+$ \ $
+
+        \textbf{Parametricity} means that the behavior of a function with respect to the types of its (parametrically polymorphic) arguments is uniform. The behavior cannot change just because it was applied to
         an argument of a different type.
-    \end{Def}
 
     \section{Type inference}
-    Haskell does not obligate us to assert a type for every expression or value because it has \textit{type inference}.
-    \begin{Def}[Type inference]
-        Type inference is an algorithm for determining the types of expressions. Haskell will
+    Don't have to assert a type for value because Haskell has \textbf{type inference} (algorithm); which 
         infer the most generally applicable (polymorphic) type that is still correct.
-    \end{Def}
 
-    \section{Determine the type}
     \begin{Def}[Monomorphism restriction]
         Top-level declarations by default will have a concrete type if any can be determined.
         
@@ -243,17 +77,18 @@
     \end{Def}
 
     \section{Definition}
+    \begin{multicols}{2}
     \begin{enumerate}
-        \item \textbf{Polymorphism}: in Haskell this will usually manifest as \textit{parametric} or \textit{ad-hoc polymorphism}.
+        \item \textbf{Polymorphism}:  \textit{parametric} or \textit{ad-hoc polymorphism}. Smaller sets from a large set.
         \item \textbf{Type inference:} Infer principal types from terms without needing explicit type
             annotations.
-        \item \textbf{Type variable} is a way to refer to an unspecified type or set of types in Haskell type
-            signatures.
+        \item \textbf{Type variable} is: {\fontfamily{cmtt}\selectfont a} $\to$ {\fontfamily{cmtt}\selectfont a}
         \item \textbf{Typeclass:} a means of expressing faculties or interfaces that multiple datatypes may have
             in common.
         \item \textbf{Ad-hoc polymorphism} (\textit{constrained polymorphism})
         \item \textbf{Module}: The unit of organization
     \end{enumerate}
+    \end{multicols}
 
 
 

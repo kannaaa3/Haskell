@@ -1,5 +1,7 @@
 import Data.List (sort)
-data Person = Person Bool deriving (Show)
+
+newtype Person = Person Bool deriving (Show)
+
 printPerson :: Person -> IO ()
 printPerson person = putStrLn (show person)
 
@@ -16,18 +18,20 @@ data Sentence =
     deriving (Eq, Show)
 s1 = Sentence "dogs" "drool" "cho"
 s2 = Sentence "Julie" "loves" "dogs"
-
-data Rocks =
+-- hiihi
+--
+newtype Rocks =
     Rocks String deriving (Eq, Show)
-data Yeah =
+newtype Yeah =
     Yeah Bool deriving (Eq, Show)
 data Papu =
     Papu Rocks Yeah
     deriving (Eq, Show)
 -- 2, 3
 --
+--
 chk ::  Eq b => (a -> b) -> a -> b -> Bool
-chk f x y = (f x) == y
+chk f x y = f x == y
 
 arith  :: Num b => (a -> b) -> Integer -> a -> b
 arith f v x = (^) (f x) v

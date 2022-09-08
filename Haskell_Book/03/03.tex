@@ -1,0 +1,64 @@
+\documentclass{article} 
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb, systeme, graphicx, fontawesome5, titlesec, lmodern, MnSymbol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[scale=.95,type1]{cabin}
+\usepackage[framemethod=tikz]{mdframed}
+
+\usepackage[legalpaper,margin=1in]{geometry}
+\setlength{\parindent}{10pt}
+%\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.2}
+
+\usepackage{tabularray}
+
+\title{Strings}
+\date{}
+\author{}
+
+
+\begin{document}
+\begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+  \item {\fontfamily{cmtt}\selectfont :type 'a'}\\ {\fontfamily{cmtt}\selectfont 'a' :: Char} 
+  \item {\fontfamily{cmtt}\selectfont print "hello world!"}\\ {\fontfamily{cmtt}\selectfont "hello world!"}
+  \item {\fontfamily{cmtt}\selectfont putStrLn "hello world!"} \\ {\fontfamily{cmtt}\selectfont hello world!}
+\end{itemize}
+
+\textbf{Main} is the default action when execute.
+
+\section{String}
+% \begin{multicol}{2}
+\begin{itemize} \renewcommand\labelitemi{\small \textcolor{Lavender}{$\blacksquare$}}
+   \item {\fontfamily{cmtt}\selectfont head "Papuchon": 'P'} 
+   \item {\fontfamily{cmtt}\selectfont tail "Papuchon": "apuchon"}
+\end{itemize}
+% \end{multicol}
+
+% section section name (end)
+
+% \begin{Def}[Typeclasses]
+%        Typeclasses provide definitions of operations, or functions, that can be shared
+%        across sets of types.
+%    \end{Def}
+   % (:) cons
+    
+   % \begin{Def}[Scope]
+   %     Scope is where a variable referred to by name is valid. Another word used with the same
+   %     meaning is \textit{visibility}, because if a variable isn't visible, it's not in scope
+   % \end{Def}
+   %
+   % \begin{Def}[Local and Top level bindings]
+   %     \begin{itemize}
+   %         \item Local bindings are bindings local to particular expressions. Cannot be imported
+   %     by other programs or modules.
+   % \item Top level bindings are bindings that stand outside of any other declaration. Can be made available
+   %     to other modules within your programs or to ther ppl.
+   %     \end{itemize}
+   % \end{Def}
+   %
+   % \begin{Def}[Data Structures]
+   %     Data structures are way of organizing data so that the data can be accessed conveniently
+   %     or efficiently.
+   % \end{Def}
+
+\end{document}

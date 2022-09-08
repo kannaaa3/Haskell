@@ -1,31 +1,21 @@
+-- import Data.List as L
 
-module PoemLines where
+myWords :: String -> [String]
+myWords "" = []
+myWords xs = 
+    let curStr = takeWhile (/= ' ') xs
+        remStr = dropWhile (/= ' ') xs
+    in curStr : myWords (dropWhile (== ' ') remStr)
 
-enum' :: (Enum a, Eq a) => a -> a -> [a]
-enum' = go
-    where go st ed 
-            | st == ed  = [ed]
-            | otherwise = st : (go (succ st) ed)
+myLilList :: [Int]
+myLilList = [x^2 | x <- [1..10]]
+-- myLilList = [1,4,9,...,100]
 
-spl :: String -> [String]
-spl []  = []
-spl str 
-  | null $ dropWhile (/= ' ') str   = [str]
-  | otherwise                       = fstWord : (spl remstr)
-    where fstWord       = takeWhile (/= ' ') str
-          (x : remstr)  = dropWhile (/= ' ') str
+------------------------------- String ------------------------------------------------------------------
 
-firstSen = "Tyger Tyger, burning bright\n"
-secondSen = "In the forests of the night\n"
-thirdSen = "What immortal hand or eye\n"
-fourthSen = "Could frame thy fearful symmetry?"
-sentences = firstSen ++ secondSen
-        ++ thirdSen ++ fourthSen
+myFilter :: String -> [String]
+myFilter = filter (`notElem` ["a", "an", "the"]) . words
 
-x = [1] ++ undefined ++ [3]
-
-mylength :: [a] -> Integer
-mylength [] = 0
-mylength (x : xs) = 1 + mylength xs
-
-k = take 1 $ filter even [1,2,3,undefined]
+-------------------------------- Exercises -----------------------------------------------------------------
+squish :: [[a]] -> [a]
+squish = foldr (++) [] -- concat
